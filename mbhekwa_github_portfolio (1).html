@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mbhekwa Ntuli | Engineering Portfolio</title>
+  <meta name="description" content="Engineering portfolio of Mbhekwa Ntuli, Mechatronics Engineering student at UCT." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #121a2b;
+      --muted: #9aa4b2;
+      --text: #e8edf5;
+      --accent: #6ee7b7;
+      --accent-2: #60a5fa;
+      --line: #23304a;
+      --card: #111827;
+      --shadow: 0 10px 30px rgba(0,0,0,0.28);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(96,165,250,0.18), transparent 24%),
+        radial-gradient(circle at top left, rgba(110,231,183,0.12), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(11,18,32,0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .hero-card, .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 2rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(110,231,183,0.08);
+      border: 1px solid rgba(110,231,183,0.2);
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { line-height: 1.15; margin: 0 0 0.8rem; }
+    h1 { font-size: clamp(2.2rem, 4.5vw, 4rem); }
+    h2 { font-size: clamp(1.4rem, 2vw, 2rem); }
+    h3 { font-size: 1.1rem; }
+
+    .lead {
+      color: #d5dce8;
+      font-size: 1.03rem;
+      max-width: 62ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.2rem 0 1.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .chip {
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #07101f;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .side-card {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+
+    .side-item {
+      padding: 0.9rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .section {
+      padding: 1.25rem 0 3rem;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: rgba(17,24,39,0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .project-visual {
+      aspect-ratio: 16 / 9;
+      padding: 1.1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background:
+        linear-gradient(145deg, rgba(96,165,250,0.14), rgba(110,231,183,0.10)),
+        #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mini-chart {
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(to top, rgba(255,255,255,0.04) 1px, transparent 1px) 0 0 / 100% 22%,
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px) 0 0 / 16% 100%,
+        rgba(255,255,255,0.02);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .curve {
+      position: absolute;
+      inset: 0;
+    }
+
+    .project-body {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      flex: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      color: #c8d2e2;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: auto;
+      padding-top: 0.2rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+    }
+
+    .about-card, .contact-card {
+      padding: 1.35rem;
+    }
+
+    .list {
+      padding-left: 1.1rem;
+      margin: 0.75rem 0 0;
+      color: #d7deea;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.6rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    code.inline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.15rem 0.4rem;
+      border-radius: 8px;
+      color: #dbe6f8;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .projects { grid-template-columns: 1fr; }
+      .hero { padding-top: 3rem; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Mbhekwa Ntuli</a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">Mechatronics Engineering Portfolio</div>
+          <h1>Control systems, modelling, and hardware implementation.</h1>
+          <p class="lead">
+            I am <strong>Mbhekwa Seviour Ntuli</strong>, a Mechatronics Engineering student at the University of Cape Town.
+            My interests include <strong>control systems</strong>, <strong>embedded systems</strong>, <strong>electronics</strong>,
+            and multidisciplinary engineering design.
+          </p>
+          <p class="lead">
+            This portfolio highlights selected control engineering work covering
+            <strong>system identification</strong>, <strong>proportional control</strong>, and <strong>lead compensator design</strong>,
+            with a focus on modelling, simulation, validation, and practical circuit implementation.
+          </p>
+
+          <div class="meta">
+            <span class="chip">UCT Mechatronics</span>
+            <span class="chip">Control Systems</span>
+            <span class="chip">MATLAB / Simulink</span>
+            <span class="chip">Analog Implementation</span>
+          </div>
+
+          <div class="cta-row">
+            <!-- Replace the links below with your real files/URLs after uploading to GitHub -->
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+          </div>
+        </div>
+
+        <aside class="panel side-card">
+          <div>
+            <h2 style="margin-bottom:0.8rem;">Highlights</h2>
+            <div class="side-list">
+              <div class="side-item">
+                <strong>System Identification</strong><br>
+                Derived and validated a second-order model from step and frequency response data.
+              </div>
+              <div class="side-item">
+                <strong>Controller Design</strong><br>
+                Designed P and lead compensator controllers from performance specifications.
+              </div>
+              <div class="side-item">
+                <strong>Practical Build</strong><br>
+                Implemented analog control circuits using op-amps, RC networks, and veroboard hardware.
+              </div>
+            </div>
+          </div>
+
+          <div class="side-item">
+            <strong>Quick links</strong><br>
+            <span class="muted">Update these after publishing:</span>
+            <div style="margin-top:0.65rem; display:grid; gap:0.45rem;">
+              <a href="https://www.linkedin.com/in/mbhekwantuli" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+              <a href="mailto:NTLMBH001@myuct.ac.za">NTLMBH001@myuct.ac.za</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured Control Projects</h2>
+            <p class="muted">Three projects showing the progression from modelling to controller design and implementation.</p>
+          </div>
+        </div>
+
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-visual">
+              <div class="mini-chart" aria-hidden="true">
+                <svg class="curve" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 0 95 C 10 95, 18 60, 28 35 S 48 10, 60 25 S 82 54, 100 50" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+                  <path d="M 0 48 L 100 48" fill="none" stroke="#6ee7b7" stroke-width="1.4" stroke-dasharray="4 4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Aircraft Suspension System Identification</h3>
+                <p class="muted">
+                  Modelled an aircraft suspension system from time-domain and frequency-domain tests. Estimated damping ratio,
+                  natural frequency, and transfer function parameters, then validated the model using step and Bode response comparisons.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">System Identification</span>
+                <span class="tag">Bode Plot</span>
+                <span class="tag">MATLAB</span>
+                <span class="tag">Second-Order Systems</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="assets/LAB1_System_Identification.pdf" target="_blank" rel="noopener">View PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual">
+              <div class="mini-chart" aria-hidden="true">
+                <svg class="curve" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 0 92 C 8 92, 16 70, 23 52 S 33 14, 47 33 S 63 57, 100 55" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+                  <path d="M 0 55 L 100 55" fill="none" stroke="#6ee7b7" stroke-width="1.4" stroke-dasharray="4 4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Proportional Control of a Vertical Lift System</h3>
+                <p class="muted">
+                  Designed a proportional controller for the kitticopter altitude system. Identified plant dynamics,
+                  selected gain from overshoot and robustness specifications, simulated the design, and built the analog controller on veroboard.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Proportional Control</span>
+                <span class="tag">Simulink</span>
+                <span class="tag">Op-Amp Circuit</span>
+                <span class="tag">Veroboard</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="assets/LAB2_Proportional_Control.pdf" target="_blank" rel="noopener">View PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual">
+              <div class="mini-chart" aria-hidden="true">
+                <svg class="curve" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 0 92 C 8 92, 13 70, 20 20 S 34 42, 46 48 S 64 49, 100 49" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+                  <path d="M 0 49 L 100 49" fill="none" stroke="#6ee7b7" stroke-width="1.4" stroke-dasharray="4 4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Lead Compensator Design and Implementation</h3>
+                <p class="muted">
+                  Improved the kitticopter response using a lead compensator designed from root-locus methods.
+                  Validated the compensated system in MATLAB/Simulink and implemented the circuit in hardware to improve settling time and reduce overshoot.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Lead Compensator</span>
+                <span class="tag">Root Locus</span>
+                <span class="tag">Hardware Validation</span>
+                <span class="tag">Control Design</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="assets/LAB3_Lead_Compensator.pdf" target="_blank" rel="noopener">View PDF</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual">
+              <div class="mini-chart" aria-hidden="true">
+                <svg class="curve" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 0 80 L 18 80 L 18 52 L 36 52 L 36 24 L 58 24 L 58 52 L 76 52 L 76 80 L 100 80" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+                  <path d="M 0 24 L 100 24" fill="none" stroke="#6ee7b7" stroke-width="1.4" stroke-dasharray="4 4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Water Level and Loadshedding Alert System</h3>
+                <p class="muted">
+                  Early first-year digital logic project for a water level detector system that also responded to loadshedding conditions.
+                  The design used discrete logic and sensing components to indicate tank level and trigger warning outputs, with a later reflection on timing limitations and possible improvements.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Digital Logic</span>
+                <span class="tag">First-Year Project</span>
+                <span class="tag">Sensors</span>
+                <span class="tag">Circuit Design</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="assets/Water_Level_Loadshedding_Project.pdf" target="_blank" rel="noopener">View PDF</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="panel about-card">
+          <h2>About</h2>
+          <p>
+            I am building a portfolio around engineering work that combines theory, simulation, and practical implementation.
+            My interests include control systems, embedded systems, circuit design, and engineering problem-solving.
+          </p>
+          <p>
+            I enjoy projects where I can move from a mathematical model to a tested design, then improve performance through analysis,
+            iteration, and validation.
+          </p>
+          <ul class="list">
+            <li>Dean's Merit List recognition</li>
+            <li>Strong foundation in electronics, embedded systems, and control</li>
+            <li>Tutoring and mentorship experience</li>
+          </ul>
+        </div>
+
+        <div class="panel contact-card" id="contact">
+          <h2>Contact</h2>
+          <p class="muted">Replace the placeholder links below before publishing.</p>
+          <div style="display:grid; gap:0.75rem; margin-top:0.8rem;">
+            <a class="side-item" href="mailto:NTLMBH001@myuct.ac.za">Email: NTLMBH001@myuct.ac.za</a>
+            <a class="side-item" href="https://www.linkedin.com/in/mbhekwantuli" target="_blank" rel="noopener">LinkedIn Profile</a>
+            <a class="side-item" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub Profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Built for GitHub Pages. Upload this file as <code class="inline">index.html</code> in your repository root, then add your project PDFs inside an <code class="inline">assets</code> folder with the file names used above.
+    </div>
+  </footer>
+</body>
+</html>
